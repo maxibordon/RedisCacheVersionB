@@ -27,12 +27,12 @@ namespace RedisCacheVersionB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-          //  var section = Configuration.GetSection("Redis:Default");
-          //  string _connectionString = section.GetSection("Connection").Value; // cadena de conexión
+             var section = Configuration.GetSection("Redis:Default");
+             string _connectionString = section.GetSection("Connection").Value; // cadena de conexión
           //  string _instanceName = section.GetSection("InstanceName").Value; // Nombre de instancia
           //  int _defaultDB = int.Parse(section.GetSection("DefaultDB").Value ?? "0"); // base de datos predeterminada           
           //  services.AddSingleton(new RedisHelper(_connectionString, _instanceName, _defaultDB));
-            var multiplexer = ConnectionMultiplexer.Connect("127.0.0.1:5003,password =uefEg7DezCTgTJDnECMexdKqxTlg+NiWkRilBFFbAIw=");
+            var multiplexer = ConnectionMultiplexer.Connect(_connectionString);
             services.AddSingleton<IConnectionMultiplexer>(multiplexer);
 
         }
