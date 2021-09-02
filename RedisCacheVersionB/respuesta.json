@@ -1,0 +1,57 @@
+{
+  "Body": {
+    "ListadoClientes": [
+      {
+        "CuentaContrato": "1",
+        "CodigoResultadoCliente": "0"
+      },
+      {
+        "CuentaContrato": "2",
+        "CodigoResultadoCliente": "0"
+      },
+      {
+        "CuentaContrato": "3",
+        "CodigoResultadoCliente": "0"
+      }
+    ],
+    "CodigoResultado": "0",
+    "DescripcionResultado": "Ejecución correcta",
+    "ListadoCliente": [
+      {
+        "CuentaContrato": "1",
+        "Tarifa": "T1",
+        "NumeroMedidor": "09882828",
+        "ModeloMedidor": "97",
+        "MarcaMedidor": "AMP",
+        "GrupoCliente": "T1",
+        "DireccionCliente": {
+          "CEP": "1414",
+          "Calle": "DIRECCION",
+          "DireccionLarga": "DIRECCION 829 Loc. CAPITAL FEDERAL",
+          "ExternalIdDireccion": "DIRECCION ARG",
+          "Interseccion1": "CALLE1",
+          "Interseccion2": "CALLE2",
+          "Localidad": "CAPITAL FEDERAL",
+          "Municipio": "Capital Federal",
+          "Numero": "1200",
+          "Provincia": "Capital Federal",
+          "Barrio": "BARRIO FAKE"
+        },
+        "Email": "alguien@gmail.com",
+        "FacturaEmail": true,
+        "Nombre": "fake",
+        "NumeroDocumento": "300321030",
+        "Suministro": "122344525",
+        "TelefonoPreferente": "3213233",
+        "TipoDocumento": "CUIT",
+        "Electrodependiente": false,
+        "EntidadBienPublico": false,
+        "TarifaSocial": false,
+        "ClubDeBarrio": false
+      }
+    ]
+  },
+  "Header": {
+    "IdPeticion": "zaraza-prueba"
+  }
+}
