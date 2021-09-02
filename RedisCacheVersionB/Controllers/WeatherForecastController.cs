@@ -39,11 +39,13 @@ namespace RedisCacheVersionB.Controllers
             var key = "TestRedis";
             var db = _redis.GetDatabase(4);
             
-            RedisValue temp = db.StringGet(key, CommandFlags.PreferReplica);            
+
+            RedisValue temp = db.StringGet(key, CommandFlags.PreferReplica);
+            db.KeyExpire(key, TimeSpan.FromMinutes(5), flags: CommandFlags.FireAndForget); //Ventana deslizante
             if (temp == RedisValue.Null)
             {
                 temp = GetFromWs();
-                db.StringSet("TestRedis", temp, TimeSpan.FromMinutes(10));
+                db.StringSet("TestRedis", temp, TimeSpan.FromMinutes(5));
             }
             else
             {
