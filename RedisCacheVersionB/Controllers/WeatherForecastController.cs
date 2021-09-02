@@ -35,24 +35,30 @@ namespace RedisCacheVersionB.Controllers
         [HttpGet]
         public string Get()
         {
-           
-            var key = "TestRedis";
-            var db = _redis.GetDatabase(4);
-            
 
-            RedisValue temp = db.StringGet(key, CommandFlags.PreferReplica);
-            db.KeyExpire(key, TimeSpan.FromMinutes(5), flags: CommandFlags.FireAndForget); //Ventana deslizante
-            if (temp == RedisValue.Null)
+            var db = _redis.GetDatabase(4);
+            var key = "TestRedis";
+            if (db.IsConnected(key))
             {
-                temp = GetFromWs();
-                db.StringSet("TestRedis", temp, TimeSpan.FromMinutes(5));
+                
+                //  var db = _redis.GetDatabase(4);
+
+
+                 RedisValue temp = db.StringGet(key, CommandFlags.PreferReplica);
+                  db.KeyExpire(key, TimeSpan.FromMinutes(5), flags: CommandFlags.FireAndForget); //Ventana deslizante
+                  if (temp == RedisValue.Null)
+                 {
+                  temp = GetFromWs();
+                  db.StringSet("TestRedis", temp, TimeSpan.FromMinutes(5));
+                 }
+                 else
+                 {
+                    temp=Encoding.UTF8.GetString(temp);
+                 }
+
+                return temp;
             }
-            else
-            {
-                temp=Encoding.UTF8.GetString(temp);
-            }
-           
-            return temp;
+            return "Desconectado";
         }
 
 

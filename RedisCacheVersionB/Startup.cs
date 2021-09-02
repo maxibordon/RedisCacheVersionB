@@ -33,6 +33,7 @@ namespace RedisCacheVersionB
           //  int _defaultDB = int.Parse(section.GetSection("DefaultDB").Value ?? "0"); // base de datos predeterminada           
           //  services.AddSingleton(new RedisHelper(_connectionString, _instanceName, _defaultDB));
             var multiplexer = ConnectionMultiplexer.Connect(_connectionString);
+           
             services.AddSingleton<IConnectionMultiplexer>(multiplexer);
 
         }
